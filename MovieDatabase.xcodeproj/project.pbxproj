@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		A828C7502920D0210090B6A4 /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A828C74F2920D0210090B6A4 /* MovieCardView.swift */; };
 		A828C7552920D3000090B6A4 /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A828C7542920D3000090B6A4 /* MovieDetailsView.swift */; };
+		A828C75729211D850090B6A4 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A828C75629211D850090B6A4 /* MovieModel.swift */; };
+		A828C75929211DCD0090B6A4 /* VM_HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A828C75829211DCD0090B6A4 /* VM_HomeView.swift */; };
+		A828C75C292121CC0090B6A4 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A828C75B292121CC0090B6A4 /* PreviewProvider.swift */; };
+		A828C75F292124190090B6A4 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = A828C75E292124190090B6A4 /* SDWebImageSwiftUI */; };
 		A8A37EBA291FAF6200389AFD /* MovieDatabaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A37EB9291FAF6200389AFD /* MovieDatabaseApp.swift */; };
 		A8A37EBC291FAF6200389AFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A37EBB291FAF6200389AFD /* ContentView.swift */; };
 		A8A37EBE291FAF6500389AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8A37EBD291FAF6500389AFD /* Assets.xcassets */; };
@@ -22,6 +26,9 @@
 /* Begin PBXFileReference section */
 		A828C74F2920D0210090B6A4 /* MovieCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardView.swift; sourceTree = "<group>"; };
 		A828C7542920D3000090B6A4 /* MovieDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
+		A828C75629211D850090B6A4 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		A828C75829211DCD0090B6A4 /* VM_HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VM_HomeView.swift; sourceTree = "<group>"; };
+		A828C75B292121CC0090B6A4 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		A8A37EB6291FAF6200389AFD /* MovieDatabase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDatabase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A37EB9291FAF6200389AFD /* MovieDatabaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDatabaseApp.swift; sourceTree = "<group>"; };
 		A8A37EBB291FAF6200389AFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A828C75F292124190090B6A4 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +76,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		A828C75A292121BE0090B6A4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A828C75B292121CC0090B6A4 /* PreviewProvider.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A8A37EAD291FAF6200389AFD = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +103,7 @@
 		A8A37EB8291FAF6200389AFD /* MovieDatabase */ = {
 			isa = PBXGroup;
 			children = (
+				A828C75A292121BE0090B6A4 /* Extensions */,
 				A8A37ED3291FC8D300389AFD /* Services */,
 				A8A37ED0291FC66400389AFD /* Networking */,
 				A8A37EC8291FAFED00389AFD /* Model */,
@@ -120,6 +137,7 @@
 		A8A37EC8291FAFED00389AFD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A828C75629211D850090B6A4 /* MovieModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,6 +163,7 @@
 		A8A37ECD291FB21800389AFD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A828C75829211DCD0090B6A4 /* VM_HomeView.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -181,6 +200,9 @@
 			dependencies = (
 			);
 			name = MovieDatabase;
+			packageProductDependencies = (
+				A828C75E292124190090B6A4 /* SDWebImageSwiftUI */,
+			);
 			productName = MovieDatabase;
 			productReference = A8A37EB6291FAF6200389AFD /* MovieDatabase.app */;
 			productType = "com.apple.product-type.application";
@@ -209,6 +231,9 @@
 				Base,
 			);
 			mainGroup = A8A37EAD291FAF6200389AFD;
+			packageReferences = (
+				A828C75D292124190090B6A4 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = A8A37EB7291FAF6200389AFD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -235,10 +260,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A828C75729211D850090B6A4 /* MovieModel.swift in Sources */,
 				A8A37EBC291FAF6200389AFD /* ContentView.swift in Sources */,
 				A8A37ECF291FB22200389AFD /* HomeView.swift in Sources */,
 				A828C7552920D3000090B6A4 /* MovieDetailsView.swift in Sources */,
+				A828C75929211DCD0090B6A4 /* VM_HomeView.swift in Sources */,
 				A8A37EBA291FAF6200389AFD /* MovieDatabaseApp.swift in Sources */,
+				A828C75C292121CC0090B6A4 /* PreviewProvider.swift in Sources */,
 				A8A37ED2291FC8A500389AFD /* NetworkingManager.swift in Sources */,
 				A8A37ED5291FC8E400389AFD /* MovieListDataService.swift in Sources */,
 				A828C7502920D0210090B6A4 /* MovieCardView.swift in Sources */,
@@ -443,6 +471,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A828C75D292124190090B6A4 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A828C75E292124190090B6A4 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A828C75D292124190090B6A4 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A8A37EAE291FAF6200389AFD /* Project object */;
 }

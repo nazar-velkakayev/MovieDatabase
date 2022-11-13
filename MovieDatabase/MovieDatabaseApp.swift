@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct MovieDatabaseApp: App {
+    @StateObject private var vm_homeView = VM_HomeView()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                ContentView()
+                    .environmentObject(vm_homeView)
+            }
+            .navigationBarHidden(true)
         }
     }
 }

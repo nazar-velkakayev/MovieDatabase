@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject private var vm_homeView: VM_HomeView
+    
     var body: some View {
         ZStack{
             Color("color_background")
@@ -15,8 +17,8 @@ struct HomeView: View {
             
             
             ScrollView(showsIndicators: false) {
-                VStack(alignment: .leading){
-                    HStack(spacing: 0){
+                VStack(alignment: .leading, spacing: 20){
+                    HStack(alignment: .bottom, spacing: 1){
                         Text("Naz")
                         Text("ar")
                             .foregroundColor(Color("color_red"))
@@ -28,23 +30,33 @@ struct HomeView: View {
                     .padding(.bottom)
                     
                     
-                    //MARK: Popular movie
+                    //MARK: Popular movies
                     VStack{
-                        sectionTitle(title: "Popular movie")
+                        sectionTitle(title: "Popular movies")
                         ScrollView(.horizontal, showsIndicators: false){
                             HStack(spacing: 20){
-                                ForEach(0..<10){i in
-                                    MovieCardView(name: "Movie Name \(i)",
-                                                  releaseDate: "Release Date \(i)",
-                                                  i: i)
+                                ForEach(vm_homeView.popularMovies){movie in
+                                    MovieCardView(movie: movie)
+                                    
                                 }
                             }
                             .padding(.leading)
-                          //  .border(.red, width: 20)
                         }
-                        //.offset(x: -20)
                         .padding(.leading, -15)
-
+                    }
+                    
+                    //MARK: top rated movies
+                    VStack{
+                        sectionTitle(title: "Top Rated movies")
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack(spacing: 20){
+                                ForEach(vm_homeView.topRatedMovies){movie in
+                                    MovieCardView(movie: movie)
+                                }
+                            }
+                            .padding(.leading)
+                        }
+                        .padding(.leading, -15)
                     }
                 }
                 .padding()
@@ -56,6 +68,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(VM_HomeView())
     }
 }
 
