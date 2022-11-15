@@ -54,7 +54,7 @@ struct HomeView: View {
                     VStack{
                         sectionTitle(title: "Top Rated movies")
                         ScrollView(.horizontal, showsIndicators: false){
-                            HStack(spacing: 20){
+                            HStack(spacing: 10){
                                 ForEach(vm_homeView.topRatedMovies){movie in
                                     NavigationLink {
                                         MovieDetailsView(movie: movie)
@@ -62,15 +62,14 @@ struct HomeView: View {
                                             .environmentObject(vm_homeView)
                                     } label: {
                                         MovieCardView(movie: movie)
-
                                     }
-
                                 }
                             }
                             .padding(.leading)
                         }
                         .padding(.leading, -15)
                     }
+
                 }
                 .padding()
             }
