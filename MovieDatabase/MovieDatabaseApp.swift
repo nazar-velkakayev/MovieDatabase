@@ -14,7 +14,7 @@ struct MovieDatabaseApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+                HomeView()
                     .environmentObject(vm_homeView)
             }
             .navigationBarHidden(true)

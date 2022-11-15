@@ -36,8 +36,13 @@ struct HomeView: View {
                         ScrollView(.horizontal, showsIndicators: false){
                             HStack(spacing: 20){
                                 ForEach(vm_homeView.popularMovies){movie in
-                                    MovieCardView(movie: movie)
-                                    
+                                    NavigationLink {
+                                        MovieDetailsView(movie: movie)
+                                            .navigationBarHidden(true)
+                                            .environmentObject(vm_homeView)
+                                    } label: {
+                                        MovieCardView(movie: movie)
+                                    }
                                 }
                             }
                             .padding(.leading)
@@ -51,7 +56,15 @@ struct HomeView: View {
                         ScrollView(.horizontal, showsIndicators: false){
                             HStack(spacing: 20){
                                 ForEach(vm_homeView.topRatedMovies){movie in
-                                    MovieCardView(movie: movie)
+                                    NavigationLink {
+                                        MovieDetailsView(movie: movie)
+                                            .navigationBarHidden(true)
+                                            .environmentObject(vm_homeView)
+                                    } label: {
+                                        MovieCardView(movie: movie)
+
+                                    }
+
                                 }
                             }
                             .padding(.leading)
@@ -67,8 +80,11 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
-            .environmentObject(VM_HomeView())
+        NavigationView {
+            HomeView()
+                .environmentObject(VM_HomeView())
+        }
+        .navigationBarHidden(true)
     }
 }
 

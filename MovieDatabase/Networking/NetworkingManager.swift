@@ -35,6 +35,7 @@ class NetworkingManger{
             break
         case .failure(let error):
             print("\nerror: \(error.localizedDescription)\n")
+            print("\n error handling complition: \(error)")
             print(error)
         }
     }
