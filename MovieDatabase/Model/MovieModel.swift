@@ -8,7 +8,6 @@
 import Foundation
 
 
-// MARK: - Welcome
 struct MovieResponse: Codable {
     let page: Int?
     let results: [MovieModel]
@@ -21,7 +20,6 @@ struct MovieResponse: Codable {
     }
 }
 
-// MARK: - Result
 struct MovieModel: Codable, Identifiable {
     let adult: Bool?
     let backdropPath: String?

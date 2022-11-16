@@ -20,7 +20,6 @@ class VM_HomeView: ObservableObject{
         getMovies()
     }
     
-    //MARK: popular
     private func getMovies(){
         movieListDataService.$popularMovies
             .sink {[weak self] returnedList in

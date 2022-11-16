@@ -30,45 +30,11 @@ struct HomeView: View {
                     .padding(.bottom)
                     
                     
-                    //MARK: Popular movies
-                    VStack{
-                        sectionTitle(title: "Popular movies")
-                        ScrollView(.horizontal, showsIndicators: false){
-                            HStack(spacing: 20){
-                                ForEach(vm_homeView.popularMovies){movie in
-                                    NavigationLink {
-                                        MovieDetailsView(movie: movie)
-                                            .navigationBarHidden(true)
-                                            .environmentObject(vm_homeView)
-                                    } label: {
-                                        MovieCardView(movie: movie, width: 200, height: 250)
-                                    }
-                                }
-                            }
-                            .padding(.leading)
-                        }
-                        .padding(.leading, -15)
-                    }
+                    //popular
+                    movieCategory(title: "Popular Movies", dataArray: vm_homeView.popularMovies, size: (200, 250))
                     
-                    //MARK: top rated movies
-                    VStack{
-                        sectionTitle(title: "Top Rated movies")
-                        ScrollView(.horizontal, showsIndicators: false){
-                            HStack(spacing: 10){
-                                ForEach(vm_homeView.topRatedMovies){movie in
-                                    NavigationLink {
-                                        MovieDetailsView(movie: movie)
-                                            .navigationBarHidden(true)
-                                            .environmentObject(vm_homeView)
-                                    } label: {
-                                        MovieCardView(movie: movie, width: 170, height: 220)
-                                    }
-                                }
-                            }
-                            .padding(.leading)
-                        }
-                        .padding(.leading, -15)
-                    }
+                    //top rated
+                    movieCategory(title: "Top Rated Movies", dataArray: vm_homeView.topRatedMovies, size: (170, 220))
 
                 }
                 .padding()
@@ -89,10 +55,29 @@ struct HomeView_Previews: PreviewProvider {
 
 
 extension HomeView{
-    @ViewBuilder private func sectionTitle(title: String)-> some View{
-        Text(title)
-            .foregroundColor(.white)
-            .font(.system(size: 20, weight: .semibold))
-            .frame(maxWidth: .infinity, alignment: .leading)
+    @ViewBuilder private func movieCategory(title: String, dataArray: [MovieModel], size: (width: CGFloat, height: CGFloat))-> some View{
+        VStack{
+            Text(title)
+                .foregroundColor(.white)
+                .font(.system(size: 20, weight: .semibold))
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+
+            ScrollView(.horizontal, showsIndicators: false){
+                HStack(spacing: 20){
+                    ForEach(dataArray){movie in
+                        NavigationLink {
+                            MovieDetailsView(movie: movie)
+                                .navigationBarHidden(true)
+                                .environmentObject(vm_homeView)
+                        } label: {
+                            MovieCardView(movie: movie, width: size.width, height: size.height)
+                        }
+                    }
+                }
+                .padding(.leading)
+            }
+            .padding(.leading, -15)
+        }
     }
 }

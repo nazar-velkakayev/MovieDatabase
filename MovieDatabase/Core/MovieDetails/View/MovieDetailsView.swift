@@ -14,7 +14,7 @@ struct MovieDetailsView: View {
     @EnvironmentObject private var vm_homeView: VM_HomeView
     
     @StateObject private var vm_movieDetailsView: VM_MovieDetailsView
-        
+    
     let movie: MovieModel
     
     init(movie: MovieModel){
@@ -28,10 +28,10 @@ struct MovieDetailsView: View {
             Color("color_background")
             
             backButton
-
+            
             
             ScrollView(showsIndicators: false){
-                headerImage()
+                headerImage
                 
                 VStack(alignment: .leading){
                     
@@ -42,18 +42,16 @@ struct MovieDetailsView: View {
                         .multilineTextAlignment(.leading)
                         .font(.system(size: 15, weight: .regular))
                         .padding(.top)
-                
+                    
                     VStack(alignment: .leading, spacing: 20){
                         
-                        if let details = vm_movieDetailsView.movieDetails,
-                           let companies = details.productionCompanies,
-                           !companies.isEmpty{
+                        if vm_movieDetailsView.areAvailableProductionCompanies{
                             VStack(alignment: .leading, spacing: 5){
                                 Text("Production Companies")
                                     .foregroundColor(.white)
                                     .font(.headline)
                                 VStack(alignment: .leading){
-                                    ForEach(companies) { company in
+                                    ForEach(vm_movieDetailsView.movieDetails!.productionCompanies!) { company in
                                         Text("\t • \(company.name)")
                                             .foregroundColor(.gray)
                                             .font(.system(size: 14, weight: .medium))
@@ -63,24 +61,20 @@ struct MovieDetailsView: View {
                         }
                         
                         
-                        if let details = vm_movieDetailsView.movieDetails,
-                           let countries = details.productionCountries,
-                           !countries.isEmpty{
+                       if vm_movieDetailsView.areCountriesAvailable{
                             VStack(alignment: .leading, spacing: 5){
                                 Text("Production Countries")
                                     .foregroundColor(.white)
                                     .font(.headline)
                                 VStack(alignment: .leading){
-                                    ForEach(countries) { country in
+                                    ForEach(vm_movieDetailsView.movieDetails!.productionCountries!) { country in
                                         Text("\t • \(country.name)")
                                             .foregroundColor(.gray)
                                             .font(.system(size: 14, weight: .medium))
                                     }
                                 }
                             }
-                            
                         }
-
                     }
                     .padding(.top)
                     
@@ -89,32 +83,32 @@ struct MovieDetailsView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 20, weight: .bold))
                         
-                    
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack(spacing: 20){
-                            ForEach(vm_movieDetailsView.similarMovies){movie in
-                                NavigationLink {
-                                    MovieDetailsView(movie: movie)
-                                        .navigationBarHidden(true)
-                                        .environmentObject(vm_homeView)
-                                } label: {
-                                    MovieCardView(movie: movie, width: 200, height: 250)
+                        
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack(spacing: 20){
+                                ForEach(vm_movieDetailsView.similarMovies){movie in
+                                    NavigationLink {
+                                        MovieDetailsView(movie: movie)
+                                            .navigationBarHidden(true)
+                                            .environmentObject(vm_homeView)
+                                    } label: {
+                                        MovieCardView(movie: movie, width: 200, height: 250)
+                                    }
                                 }
                             }
+                            .padding(.leading)
                         }
-                        .padding(.leading)
-                    }
-                    .padding(.leading, -15)
-                    .padding(.bottom, 100)
+                        .padding(.leading, -15)
+                        .padding(.bottom, 100)
                     }
                     .padding(.top)
-
+                    
                 }
                 .padding()
             }
         }
         .edgesIgnoringSafeArea(.all)
-        .overlay (watchButton() ,alignment: .bottom)
+        .overlay (watchButton ,alignment: .bottom)
     }
     
     private func colorRank(i: Int, score: Double) -> Bool{
@@ -174,17 +168,16 @@ extension MovieDetailsView{
         .zIndex(1)
         .padding(.horizontal, 20)
         .padding(.top, 40)
-
+        
     }
     
     //MARK: header image
-    @ViewBuilder private func headerImage() -> some View{
+    @ViewBuilder private var headerImage: some View{
         GeometryReader{ proxy in
             let minY = proxy.frame(in: .named("SCROLL")).minY
             let size = proxy.size
             let height = size.height + minY
             
-            //Image("img_example")
             AnimatedImage(url: URL(string: movie.posterURL))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -204,37 +197,27 @@ extension MovieDetailsView{
                                     .foregroundColor(.white)
                                     .font(.system(size: 15, weight: .bold))
                                     .multilineTextAlignment(.center)
-
+                                
                             }
-                           
-                            
-                              //  ScrollView(.horizontal, showsIndicators: false){
-                                    HStack{
-                                        Text(movie.releaseDate.asYear())
-                                        Text("•")
-                                        
-                                        if let movieDetails = vm_movieDetailsView.movieDetails{
-                                            ForEach(movieDetails.genres){ genre in
-                                                Text(genre.name + " • ")
-                                            }
-                                            
-                                          //  Text(movieDetails.runtime?.minutesToHoursAndMinutes() ?? "")
-                                        }
-                                        
+                            HStack{
+                                Text(movie.releaseDate.asYear())
+                                Text("•")
+                                
+                                if let movieDetails = vm_movieDetailsView.movieDetails{
+                                    ForEach(movieDetails.genres){ genre in
+                                        Text(genre.name + " • ")
                                     }
-                                    .font(.system(size: 15, weight: .medium))
-                                    .foregroundColor(.gray)
-//                                }
-//                                .padding(.horizontal)
-                            
-                                                        
+                                }
+                            }
+                            .font(.system(size: 15, weight: .medium))
+                            .foregroundColor(.gray)
                         }
                     }
                 }
                 .cornerRadius(10)
                 .offset(y: -minY)
         }
-        .frame(height: 350)
+        .frame(height: 400)
     }
     
     //MARK: movie rank
@@ -260,11 +243,10 @@ extension MovieDetailsView{
     }
     
     //MARK: watch button
-    @ViewBuilder private func watchButton()-> some View{
+    @ViewBuilder private var watchButton: some View{
         VStack{
-            if let details = vm_movieDetailsView.movieDetails,
-               let link = URL(string: details.homepage){
-                Link(destination: link) {
+            if vm_movieDetailsView.isAvailableMovieLink{
+                Link(destination: URL(string: vm_movieDetailsView.movieDetails!.homepage)!) {
                     ZStack{
                         Color("color_red")
                         

@@ -33,8 +33,6 @@ struct MovieCardView: View {
                     .font(.system(size: 17, weight: .semibold))
                     .frame(maxWidth: width, alignment: .leading)
                     .multilineTextAlignment(.leading)
-                  //  .fixedSize(horizontal: false, vertical: true)
-
                 
                 
                 Text(movie.releaseDate.asReadbleDate())

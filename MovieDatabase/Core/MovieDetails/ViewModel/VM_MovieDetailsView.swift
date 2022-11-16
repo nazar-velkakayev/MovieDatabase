@@ -42,8 +42,28 @@ class VM_MovieDetailsView: ObservableObject{
             }
             .store(in: &cancellables)
     }
+    
+    var areCountriesAvailable: Bool{
+        guard let details = movieDetails,
+              let countries = details.productionCountries else{return false}
+        
+        return countries.isEmpty
+        
+
+    }
+    
+    var areAvailableProductionCompanies: Bool{
+        guard let details = movieDetails,
+              let companies = details.productionCompanies else{return false}
+        
+        return companies.isEmpty
+        
+    }
+    
+    var isAvailableMovieLink: Bool{
+        guard let details = movieDetails,
+              let _ = URL(string: details.homepage) else{return false}
+
+        return true
+    }
 }
-
-
-//error build: Undefined symbol: _$s13MovieDatabase0A11DetailModelV5adult12backdropPath19belongsToCollection6budget6genres8homepage2id6imdbID16originalLanguage0Q5Title8overview10popularity06posterG019productionCompanies0W9Countries11releaseDate7revenue7runtime15spokenLanguages6status7tagline5title5video11voteAverage9voteCountACSb_SSAA07BelongsiJ0VSgSiSayAA5GenreVGSSSiS4SSdSSSayAA17ProductionCompanyVGSgSayAA17ProductionCountryVGSgSSS2iSgSayAA06SpokenR0VGS3SSbSgSdSitcfC
-

@@ -24,11 +24,9 @@ struct DetailsCompanyCardView: View {
                     .scaledToFill()
                     .clipped()
                     .frame(width: 100, height: 100)
-                   // .border(.green, width: 10)
 
 
             Text(name)
-                //.foregroundColor(Color("color_background"))
                 .foregroundColor(.white)
                 .font(.system(size: 13, weight: .semibold))
                 .frame(width: 150)
