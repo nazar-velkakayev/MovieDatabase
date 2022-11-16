@@ -14,6 +14,7 @@ enum API{
         case topRated
         case similar(id: Int)
         case lookup(id: Int)
+        case credits(id: Int)
         
         var url: String{
             var components = URLComponents()
@@ -64,7 +65,18 @@ enum API{
                     URLQueryItem(name: "language", value: "en-US")
                     
                 ]
+                
+            case .credits(let id):
+                //example url: https://api.themoviedb.org/3/movie/505642/credits?api_key=568cd98b3417378bb325cd3b623c9834&language=en-US
+                
+                components.path = "/3/movie/\(id)/credits"
+                components.queryItems  = [
+                    URLQueryItem(name: "api_key", value: Global.api_key_v3),
+                    URLQueryItem(name: "language", value: "en-US")
+                    
+                ]
             }
+            
             
             return components.url?.absoluteString ?? ""
         }

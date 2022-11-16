@@ -11,15 +11,18 @@ import Combine
 class VM_MovieDetailsView: ObservableObject{
     @Published var movieDetails: MovieDetailModel?
     @Published var similarMovies: [MovieModel] = []
+    @Published var movieCredits : [MovieCredit] = []
         
     private let movieDetailDataService: MovieDetailsDataService
     private let similarMoviesListDataService: SimilarMoviesListDataService
+    private let movieCreditsSubscription: MovieCreditsDataService
     
     private var cancellables = Set<AnyCancellable>()
     
     init(movie: MovieModel){
         self.movieDetailDataService = MovieDetailsDataService(movie: movie)
         self.similarMoviesListDataService = SimilarMoviesListDataService(movie: movie)
+        self.movieCreditsSubscription = MovieCreditsDataService(movie: movie)
         
         addMovieDetailsSubscription()
     }
@@ -39,6 +42,14 @@ class VM_MovieDetailsView: ObservableObject{
                 
                 self.similarMovies = returnedSimilarMovies
                 
+            }
+            .store(in: &cancellables)
+        
+        movieCreditsSubscription.$movieCredits
+            .sink { [weak self] returnedCredits in
+                guard let self = self else{return}
+                
+                self.movieCredits = returnedCredits
             }
             .store(in: &cancellables)
     }
