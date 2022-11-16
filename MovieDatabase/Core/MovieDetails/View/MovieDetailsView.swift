@@ -98,7 +98,7 @@ struct MovieDetailsView: View {
                                         .navigationBarHidden(true)
                                         .environmentObject(vm_homeView)
                                 } label: {
-                                    MovieCardView(movie: movie)
+                                    MovieCardView(movie: movie, width: 200, height: 250)
                                 }
                             }
                         }

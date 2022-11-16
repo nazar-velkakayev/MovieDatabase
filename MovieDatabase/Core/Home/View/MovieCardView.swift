@@ -10,31 +10,28 @@ import SDWebImageSwiftUI
 
 struct MovieCardView: View {
     let movie: MovieModel
+    let width: CGFloat
+    let height: CGFloat
     
     var body: some View {
         VStack(alignment: .leading){
             VStack(alignment: .leading){
                 AnimatedImage(url: URL(string: movie.posterURL))
                     .resizable()
+
                     .placeholder{
-                        ZStack {
-                            Color.gray
-                            ProgressView()
-                        }
-                        .cornerRadius(20)
-                        .frame(width: 200, height: 250)
+                        ShimmerEffect(width: width, height: height)
                     }
-                    .scaledToFill()
-                    .frame(width: 200, height: 250)
+                    .frame(width: width, height: height)
             }
-            .cornerRadius(20)
-            .frame(width: 200, height: 250)
+            .cornerRadius(10)
+            .frame(width: width, height: height)
             
             VStack(alignment: .leading){
                 Text(movie.title)
                     .foregroundColor(.white)
                     .font(.system(size: 17, weight: .semibold))
-                    .frame(maxWidth: 200, alignment: .leading)
+                    .frame(maxWidth: width, alignment: .leading)
                     .multilineTextAlignment(.leading)
                   //  .fixedSize(horizontal: false, vertical: true)
 
@@ -47,19 +44,11 @@ struct MovieCardView: View {
             }
         }
     }
-    
-    private func dateFormatter(dateString: String)-> String{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        guard let date = dateFormatter.date(from: dateString) else{return ""}
-        dateFormatter.dateFormat = "MMM dd, yyyy"
-        return dateFormatter.string(from: date)
-    }
 }
 
 struct MovieCardView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieCardView(movie: dev.movie1)
+        MovieCardView(movie: dev.movie1, width: 200, height: 250)
             .previewLayout(.sizeThatFits)
     }
 }

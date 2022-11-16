@@ -41,7 +41,7 @@ struct HomeView: View {
                                             .navigationBarHidden(true)
                                             .environmentObject(vm_homeView)
                                     } label: {
-                                        MovieCardView(movie: movie)
+                                        MovieCardView(movie: movie, width: 200, height: 250)
                                     }
                                 }
                             }
@@ -61,7 +61,7 @@ struct HomeView: View {
                                             .navigationBarHidden(true)
                                             .environmentObject(vm_homeView)
                                     } label: {
-                                        MovieCardView(movie: movie)
+                                        MovieCardView(movie: movie, width: 170, height: 220)
                                     }
                                 }
                             }
