@@ -18,8 +18,8 @@ class MovieDetailsDataService{
     
     
     private func getMovieDetails(movieID: Int){
-        guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieID)?api_key=568cd98b3417378bb325cd3b623c9834&language=en-US") else{
-            print("\n invalid movie details url")
+        guard let url = URL(string: API.Endpoint.lookup(id: movieID).url) else{
+            print("\n invalid movie details url:")
             return
         }
         

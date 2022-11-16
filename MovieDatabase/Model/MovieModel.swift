@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Welcome
 struct MovieResponse: Codable {
-    let page: Int
+    let page: Int?
     let results: [MovieModel]
     let totalPages, totalResults: Int
 
@@ -23,7 +23,7 @@ struct MovieResponse: Codable {
 
 // MARK: - Result
 struct MovieModel: Codable, Identifiable {
-    let adult: Bool
+    let adult: Bool?
     let backdropPath: String?
     let genreIDS: [Int]
     let id: Int

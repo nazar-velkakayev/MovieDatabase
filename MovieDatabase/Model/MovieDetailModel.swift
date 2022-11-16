@@ -9,10 +9,10 @@ import Foundation
 
 struct MovieDetailModel: Codable{
     
-    let adult: Bool
+    let adult: Bool?
     let backdropPath: String?
     let belongsToCollection: BelongsToCollection?
-    let budget: Int
+    let budget: Int?
     let genres: [Genre]
     let homepage: String
     let id: Int

@@ -17,39 +17,52 @@ class MovieListDataService{
     private var topRatedMovieSubscription: AnyCancellable?
     
     init(){
-        getMovies()
+        getPopularMovies()
+        getTopRatedMovies()
     }
     
-    
-    private func getMovies(){
-        //MARK: popular
-        if let popularMovieURL = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=568cd98b3417378bb325cd3b623c9834&language=en-US&page=1") {
-            popularMovieSubscription = NetworkingManger.download(url: popularMovieURL)
-                .decode(type: MovieResponse.self, decoder: JSONDecoder())
-                .sink(receiveCompletion: NetworkingManger.handleComlition, receiveValue: {[weak self] returnedMovies in
-                    guard let self = self else{return}
-                    
-                    self.popularMovies = returnedMovies.results
-                    self.popularMovieSubscription?.cancel()
-                    print("\n popular movie list returned successfully")
-                })
-        }else{
+        
+    private func getPopularMovies(){
+//        guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=568cd98b3417378bb325cd3b623c9834&language=en-US&page=1") else {
+//            print("\n invalid popular movie list url:")
+//            return
+//        }
+//
+        guard let url = URL(string: API.Endpoint.popular.url) else{
             print("\n invalid popular movie list url:")
+            return
         }
         
-        //MARK: top rated
-        if let topRatedMovieURL = URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=568cd98b3417378bb325cd3b623c9834&language=en-US&page=1") {
-            topRatedMovieSubscription = NetworkingManger.download(url: topRatedMovieURL)
-                .decode(type: MovieResponse.self, decoder: JSONDecoder())
-                .sink(receiveCompletion: NetworkingManger.handleComlition, receiveValue: {[weak self] returnedMovies in
-                    guard let self = self else{return}
-                    
-                    self.topRatedMovies = returnedMovies.results
-                    self.topRatedMovieSubscription?.cancel()
-                    print("\n top-rated movie list returned successfully")
-                })
-        }else{
-            print("\n invalid top-rated movie list url")
+        popularMovieSubscription = NetworkingManger.download(url: url)
+            .decode(type: MovieResponse.self, decoder: JSONDecoder())
+            .sink(receiveCompletion: NetworkingManger.handleComlition, receiveValue: {[weak self] returnedMovies in
+                guard let self = self else{return}
+                
+                self.popularMovies = returnedMovies.results
+                self.popularMovieSubscription?.cancel()
+                print("\n popular movie list returned successfully")
+            })
+    }
+    
+    private func getTopRatedMovies(){
+//        guard let url = URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=568cd98b3417378bb325cd3b623c9834&language=en-US&page=1") else {
+//            print("\n invalid top-rated movie list url")
+//            return
+//        }
+        
+        guard let url = URL(string: API.Endpoint.topRated.url) else{
+            print("\n invalid popular movie list url:")
+            return
         }
+        
+        topRatedMovieSubscription = NetworkingManger.download(url: url)
+            .decode(type: MovieResponse.self, decoder: JSONDecoder())
+            .sink(receiveCompletion: NetworkingManger.handleComlition, receiveValue: {[weak self] returnedMovies in
+                guard let self = self else{return}
+                
+                self.topRatedMovies = returnedMovies.results
+                self.topRatedMovieSubscription?.cancel()
+                print("\n top-rated movie list returned successfully")
+            })
     }
 }
