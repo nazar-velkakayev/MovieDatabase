@@ -13,7 +13,6 @@ struct MovieCreditsResponse: Codable {
     let crew: [MovieCredit]?
 }
 
-// MARK: - Cast
 struct MovieCredit: Codable, Identifiable {
     let adult: Bool
     let gender, id: Int
