@@ -78,6 +78,25 @@ struct MovieDetailsView: View {
                     }
                     .padding(.top)
                     
+                    if !vm_movieDetailsView.movieCredits.isEmpty{
+                        
+                        VStack(alignment: .leading){
+                            Text("Cast")
+                                .foregroundColor(.white)
+                                .font(.system(size: 20, weight: .bold))
+                            
+                            ScrollView(.horizontal, showsIndicators: false){
+                                HStack(alignment: .top){
+                                    ForEach(vm_movieDetailsView.movieCredits){cast in
+                                        CastCardView(image: cast.profilePath,
+                                                     name: cast.originalName,
+                                                     character: cast.character)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
                     VStack(alignment: .leading){
                         Text("Similar Movies")
                             .foregroundColor(.white)

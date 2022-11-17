@@ -50,6 +50,7 @@ class VM_MovieDetailsView: ObservableObject{
                 guard let self = self else{return}
                 
                 self.movieCredits = returnedCredits
+                
             }
             .store(in: &cancellables)
     }

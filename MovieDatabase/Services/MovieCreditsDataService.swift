@@ -28,7 +28,13 @@ class MovieCreditsDataService{
             .decode(type: MovieCreditsResponse.self, decoder: JSONDecoder())
             .sink(receiveCompletion: NetworkingManger.handleComlition, receiveValue: {[weak self] returnedMovieCreditModel in
                 guard let self = self else{return}
-                self.movieCredits = returnedMovieCreditModel.cast
+                var sorted = returnedMovieCreditModel.cast.sorted(by: {$0.popularity > $1.popularity})
+                
+                sorted = Array(sorted.self[...10])
+                
+                self.movieCredits = sorted
+                
+                
                 self.movieCreditSubscription?.cancel()
                 
                 print("\n movie credits downloaded successfully")

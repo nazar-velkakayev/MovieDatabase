@@ -9,11 +9,12 @@ import Foundation
 
 struct MovieCreditsResponse: Codable {
     let id: Int
-    let cast, crew: [MovieCredit]
+    let cast: [MovieCredit]
+    let crew: [MovieCredit]?
 }
 
 // MARK: - Cast
-struct MovieCredit: Codable {
+struct MovieCredit: Codable, Identifiable {
     let adult: Bool
     let gender, id: Int
     let knownForDepartment: Department
