@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var vm_homeView: VM_HomeView
+    @State private var selectedIndex: Int = 1
     
     var body: some View {
         ZStack{
@@ -31,15 +32,17 @@ struct HomeView: View {
                     
                     
                     //popular
-                    movieCategory(title: "Popular Movies", dataArray: vm_homeView.popularMovies, size: (200, 250))
+                    movieCategory(title: "Popular Movies", dataArray: vm_homeView.popularMovies, size: (150, 200))
                     
                     //top rated
-                    movieCategory(title: "Top Rated Movies", dataArray: vm_homeView.topRatedMovies, size: (170, 220))
+                    movieCategory(title: "Top Rated Movies", dataArray: vm_homeView.topRatedMovies, size: (120, 170))
 
                 }
                 .padding()
+                .padding(.bottom, 100)
             }
         }
+        .overlay (CustomTabbar(selectedIndex: $selectedIndex), alignment: .bottom)
     }
 }
 

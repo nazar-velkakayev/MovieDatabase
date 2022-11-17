@@ -34,7 +34,7 @@ struct ShimmerEffect: View {
         }
         .clipped()
         .onAppear{
-            withAnimation(.default.speed(0.15).delay(0).repeatForever(autoreverses: false)){
+            withAnimation(.default.speed(0.3).delay(0).repeatForever(autoreverses: false)){
                 self.start.toggle()
             }
         }
