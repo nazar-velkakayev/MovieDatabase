@@ -13,6 +13,8 @@ struct ShimmerEffect: View {
     let width: CGFloat
     let height: CGFloat
     
+    let speed: Double
+    
     let center = UIScreen.main.bounds.width
     
     var body: some View {
@@ -34,7 +36,7 @@ struct ShimmerEffect: View {
         }
         .clipped()
         .onAppear{
-            withAnimation(.default.speed(0.3).delay(0).repeatForever(autoreverses: false)){
+            withAnimation(.default.speed(speed).delay(0).repeatForever(autoreverses: false)){
                 self.start.toggle()
             }
         }
@@ -43,6 +45,6 @@ struct ShimmerEffect: View {
 
 struct ShimmerEffect_Previews: PreviewProvider {
     static var previews: some View {
-        ShimmerEffect(width: 200, height: 250)
+        ShimmerEffect(width: 200, height: 250, speed: 0.3)
     }
 }

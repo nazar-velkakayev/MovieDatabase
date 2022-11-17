@@ -20,7 +20,7 @@ struct MovieCardView: View {
                     .resizable()
 
                     .placeholder{
-                        ShimmerEffect(width: width, height: height)
+                        ShimmerEffect(width: width, height: height, speed: 0.3)
                     }
                     .frame(width: width, height: height)
             }

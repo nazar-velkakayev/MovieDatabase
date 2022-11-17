@@ -19,11 +19,17 @@ struct CastCardView: View {
             AnimatedImage(url: URL(string:"https://image.tmdb.org/t/p/w500\(image ?? "")"))
                 .resizable()
                 .placeholder{
-                    Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(.gray)
+                    
+                    ShimmerEffect(width: 60, height: 60, speed: 0.1)
                         .frame(width: 60, height: 60)
+                        .clipShape(Circle())
+                        .clipped()
+                    
+//                    Image(systemName: "person.circle.fill")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .foregroundColor(.gray)
+//                        .frame(width: 60, height: 60)
                 }
                 .scaledToFill()
                 .frame(width: 60, height: 60)

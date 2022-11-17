@@ -79,7 +79,6 @@ struct MovieDetailsView: View {
                     .padding(.top)
                     
                     if !vm_movieDetailsView.movieCredits.isEmpty{
-                        
                         VStack(alignment: .leading){
                             Text("Cast")
                                 .foregroundColor(.white)
