@@ -45,7 +45,7 @@ struct CustomTabbar: View {
 
 struct CustomTabbar_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTabbar(selectedIndex: .constant(2))
+        CustomTabbar(selectedIndex: .constant(1))
     }
 }
 
@@ -59,7 +59,7 @@ extension CustomTabbar{
             HStack{
                 
                 Image(systemName: selectedIndex == index ? "\(image).fill" : image)
-                    .font(.system(size: 25, weight: .bold))
+                    .font(.system(size: 25, weight: selectedIndex == index ? .bold : .medium))
                     .foregroundColor(.white.opacity(selectedIndex == index ? 1 : 0.6))
                 
                 if selectedIndex == index{
