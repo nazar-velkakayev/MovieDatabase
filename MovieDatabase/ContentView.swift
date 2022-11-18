@@ -7,9 +7,14 @@
 
 import SwiftUI
 
-struct ContentView: View {    
+struct ContentView: View {
+    @StateObject private var vm_homeView = VM_HomeView()
     var body: some View {
-        HomeView()
+        NavigationView {
+            HomeView()
+                .environmentObject(vm_homeView)
+        }
+        .navigationBarHidden(true)
     }
 }
 

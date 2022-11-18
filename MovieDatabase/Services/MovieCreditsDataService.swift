@@ -30,7 +30,9 @@ class MovieCreditsDataService{
                 guard let self = self else{return}
                 var sorted = returnedMovieCreditModel.cast.sorted(by: {$0.popularity > $1.popularity})
                 
-                sorted = Array(sorted.self[...10])
+                if sorted.count >= 10{
+                    sorted = Array(sorted.self[...10])
+                }
                 
                 self.movieCredits = sorted
                 

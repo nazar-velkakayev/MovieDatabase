@@ -32,9 +32,10 @@ struct MovieDetailsView: View {
             
             ScrollView(showsIndicators: false){
                 headerImage
+    
                 
                 VStack(alignment: .leading){
-                    
+                                        
                     movieRank
                     
                     Text(movie.overview)
@@ -124,9 +125,11 @@ struct MovieDetailsView: View {
                 }
                 .padding()
             }
+            
+            watchButton
+                .offset(y: UIScreen.main.bounds.height - 100)
         }
         .edgesIgnoringSafeArea(.all)
-        .overlay (watchButton ,alignment: .bottom)
     }
     
     private func colorRank(i: Int, score: Double) -> Bool{
@@ -196,68 +199,80 @@ extension MovieDetailsView{
             let size = proxy.size
             let height = size.height + minY
             
-            AnimatedImage(url: URL(string: movie.posterURL))
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: size.width, height: height > 0 ? height : 0, alignment: .top)
-                .overlay{
-                    ZStack(alignment: .bottom){
-                        LinearGradient(colors: [.clear, Color("color_background")], startPoint: .top, endPoint: .bottom)
+            ZStack(alignment: .bottom){
+                AnimatedImage(url: URL(string: movie.posterURL))
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+  
+                
+                    LinearGradient(colors: [.clear, Color("color_background")], startPoint: .top, endPoint: .bottom)
+                    
+                    VStack{
+                        Text(movie.originalTitle)
+                            .foregroundColor(.white)
+                            .font(.system(size: 30, weight: .bold))
+                            .multilineTextAlignment(.center)
                         
-                        VStack{
-                            Text(movie.originalTitle)
+                        if let movieDetails = vm_movieDetailsView.movieDetails{
+                            Text(movieDetails.tagline)
                                 .foregroundColor(.white)
-                                .font(.system(size: 30, weight: .bold))
+                                .font(.system(size: 15, weight: .bold))
                                 .multilineTextAlignment(.center)
                             
-                            if let movieDetails = vm_movieDetailsView.movieDetails{
-                                Text(movieDetails.tagline)
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15, weight: .bold))
-                                    .multilineTextAlignment(.center)
-                                
-                            }
-                            HStack{
-                                Text(movie.releaseDate.asYear())
-                                Text("•")
-                                
-                                if let movieDetails = vm_movieDetailsView.movieDetails{
-                                    ForEach(movieDetails.genres){ genre in
-                                        Text(genre.name + " • ")
-                                    }
-                                }
-                            }
-                            .font(.system(size: 15, weight: .medium))
-                            .foregroundColor(.gray)
                         }
+     
                     }
-                }
-                .cornerRadius(10)
-                .offset(y: -minY)
+            }
+            .frame(width: size.width, height: height > 0 ? height : 0, alignment: .top)
+            .cornerRadius(10)
+            .offset(y: -minY)
+
         }
         .frame(height: 400)
     }
     
     //MARK: movie rank
     @ViewBuilder private var movieRank: some View{
-        HStack(alignment: .top){
-            Text(String(format: "%.1f", movie.voteAverage))
-                .font(.system(size: 18, weight: .bold))
-                .foregroundColor(.yellow)
-                .padding(.trailing, 5)
+        VStack(spacing: 10){
+            HStack{
+                Text(movie.releaseDate.asYear())
+                Text("•")
+                
+                if let movieDetails = vm_movieDetailsView.movieDetails{
+                    ForEach(movieDetails.genres){ genre in
+                        Text(genre.name + ",")
+                            .minimumScaleFactor(0.7)
+                    }
+                }
+            }
+            .font(.system(size: 15, weight: .medium))
+            .foregroundColor(.gray)
             
-            ForEach(0..<5){i in
-                Image(systemName: "star.fill")
-                    .font(.callout)
-                    .foregroundColor(colorRank(i: i, score: movie.voteAverage) ? .yellow : .gray)
+            if let detail = vm_movieDetailsView.movieDetails, let runtime = detail.runtime{
+                Text(runtime.minutesToHoursAndMinutes())
+                    .font(.system(size: 15, weight: .medium))
+                    .foregroundColor(.gray)
             }
             
-            Text("(\(movie.voteCount))")
-                .font(.caption)
-                .foregroundColor(.gray)
-                .padding(.trailing, 5)
+            HStack(alignment: .top){
+                Text(String(format: "%.1f", movie.voteAverage))
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.yellow)
+                    .padding(.trailing, 5)
+                
+                ForEach(0..<5){i in
+                    Image(systemName: "star.fill")
+                        .font(.callout)
+                        .foregroundColor(colorRank(i: i, score: movie.voteAverage) ? .yellow : .gray)
+                }
+                
+                Text("(\(movie.voteCount))")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .padding(.trailing, 5)
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
         }
-        .frame(maxWidth: .infinity, alignment: .center)
     }
     
     //MARK: watch button
@@ -274,7 +289,8 @@ extension MovieDetailsView{
                     }
                     .frame(width: 200, height: 50)
                     .cornerRadius(10)
-                }
+
+            }
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)

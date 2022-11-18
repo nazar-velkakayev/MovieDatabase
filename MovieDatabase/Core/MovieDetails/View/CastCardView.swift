@@ -31,7 +31,7 @@ struct CastCardView: View {
             
             Text(name)
                 .foregroundColor(.gray)
-                .font(.system(size: 13, weight: .semibold))
+                .font(.system(size: 11, weight: .semibold))
 
         }
     }

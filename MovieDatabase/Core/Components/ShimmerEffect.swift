@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Shimmer
 
 struct ShimmerEffect: View {
-    @State private var start: Bool = false
+   // @State private var start: Bool = false
     
     let width: CGFloat
     let height: CGFloat
@@ -26,20 +27,9 @@ struct ShimmerEffect: View {
             Color.white
                 .frame(width: width * 2, height: height * 2)
                 .cornerRadius(10)
-                .mask {
-                    Rectangle()
-                        .fill(LinearGradient(colors: [.clear, .white.opacity(0.1), .clear], startPoint: .top, endPoint: .bottom))
-                        .rotationEffect(.init(degrees: 70))
-                        .offset(x: start ? center : -center)
-
-                }
+                .shimmering()
         }
         .clipped()
-        .onAppear{
-            withAnimation(.default.speed(speed).delay(0).repeatForever(autoreverses: false)){
-                self.start.toggle()
-            }
-        }
     }
 }
 

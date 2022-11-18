@@ -16,7 +16,7 @@ struct MovieCreditsResponse: Codable {
 struct MovieCredit: Codable, Identifiable {
     let adult: Bool
     let gender, id: Int
-    let knownForDepartment: Department
+    let knownForDepartment: Department?
     let name, originalName: String
     let popularity: Double
     let profilePath: String?
@@ -53,4 +53,5 @@ enum Department: String, Codable {
     case sound = "Sound"
     case visualEffects = "Visual Effects"
     case writing = "Writing"
+    case lighting = "Lighting"
 }

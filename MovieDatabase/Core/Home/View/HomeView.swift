@@ -12,7 +12,7 @@ struct HomeView: View {
     @State private var selectedIndex: Int = 1
     
     var body: some View {
-        ZStack{
+        ZStack(alignment: .top){
             Color("color_background")
                 .edgesIgnoringSafeArea(.all)
             
@@ -41,8 +41,11 @@ struct HomeView: View {
                 .padding()
                 .padding(.bottom, 100)
             }
+            
+            CustomTabbar(selectedIndex: $selectedIndex)
+                .offset(y: UIScreen.main.bounds.height - 150)
+                .zIndex(2)
         }
-        .overlay (CustomTabbar(selectedIndex: $selectedIndex), alignment: .bottom)
     }
 }
 
