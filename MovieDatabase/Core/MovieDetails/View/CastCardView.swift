@@ -16,7 +16,7 @@ struct CastCardView: View {
     
     var body: some View {
         VStack{
-            AnimatedImage(url: URL(string:"https://image.tmdb.org/t/p/w500\(image ?? "")"))
+            AnimatedImage(url: URL(string: API.Endpoint.image(endpoint: image).url))
                 .resizable()
                 .placeholder{
                     ShimmerEffect(width: 60, height: 60, speed: 0.1)
@@ -29,11 +29,19 @@ struct CastCardView: View {
                 .frame(width: 60, height: 60)
                 .clipShape(Circle())
             
-            Text(name)
+            Text("\(devideName().name)\n\(devideName().surname)")
                 .foregroundColor(.gray)
                 .font(.system(size: 11, weight: .semibold))
+                .multilineTextAlignment(.center)
 
         }
+        .padding(5)
+    }
+    
+    private func devideName()->(name: String, surname: String){
+        let separated = name.components(separatedBy: " ")
+        
+        return (separated.first ?? "", separated.last ?? "")
     }
 }
 

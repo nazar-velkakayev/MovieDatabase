@@ -14,7 +14,7 @@ struct DetailsCompanyCardView: View {
     
     var body: some View {
         VStack{
-                AnimatedImage(url: URL(string:"https://image.tmdb.org/t/p/w500\(image ?? "")"))
+            AnimatedImage(url: URL(string: API.Endpoint.image(endpoint: name).url))
                     .resizable()
                     .placeholder{
                         Circle()

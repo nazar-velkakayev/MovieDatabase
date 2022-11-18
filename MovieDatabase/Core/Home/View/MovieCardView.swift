@@ -18,7 +18,6 @@ struct MovieCardView: View {
             VStack(alignment: .leading){
                 AnimatedImage(url: URL(string: movie.posterURL))
                     .resizable()
-
                     .placeholder{
                         ShimmerEffect(width: width, height: height, speed: 0.3)
                     }

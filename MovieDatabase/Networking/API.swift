@@ -15,6 +15,7 @@ enum API{
         case similar(id: Int)
         case lookup(id: Int)
         case credits(id: Int)
+        case image(endpoint: String?)
         
         var url: String{
             var components = URLComponents()
@@ -75,6 +76,10 @@ enum API{
                     URLQueryItem(name: "language", value: "en-US")
                     
                 ]
+            case .image(let endpoint):
+                //example url:    https://image.tmdb.org/t/p/w500/f8VWGyaIS38NkDIzQ2hapXKt0N5.jpg
+                components.host = "image.tmdb.org"
+                components.path = "/t/p/w500\(endpoint ?? "")"
             }
             
             

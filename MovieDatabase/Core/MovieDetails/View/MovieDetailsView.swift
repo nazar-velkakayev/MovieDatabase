@@ -241,7 +241,7 @@ extension MovieDetailsView{
                 if let movieDetails = vm_movieDetailsView.movieDetails{
                     ForEach(movieDetails.genres){ genre in
                         Text(genre.name + ",")
-                            .minimumScaleFactor(0.7)
+                            .minimumScaleFactor(0.8)
                     }
                 }
             }

@@ -50,10 +50,10 @@ struct MovieModel: Codable, Identifiable {
     
     
     var backdropURL: String {
-        return "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")"
+        return API.Endpoint.image(endpoint: backdropPath).url
     }
     
     var posterURL: String {
-        return "https://image.tmdb.org/t/p/w500\(posterPath ?? "")"
+        return API.Endpoint.image(endpoint: posterPath).url
     }
 }

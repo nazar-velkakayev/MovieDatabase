@@ -16,6 +16,7 @@
 		A828C763292133AE0090B6A4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A828C762292133AE0090B6A4 /* String.swift */; };
 		A87C3AEE2926398F001954FF /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87C3AED2926398F001954FF /* CustomTabbar.swift */; };
 		A87C3AF0292658B3001954FF /* CastCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87C3AEF292658B3001954FF /* CastCardView.swift */; };
+		A8845EA02927CD6D00DF8018 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8845E9F2927CD6D00DF8018 /* LaunchScreen.storyboard */; };
 		A8A37EBA291FAF6200389AFD /* MovieDatabaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A37EB9291FAF6200389AFD /* MovieDatabaseApp.swift */; };
 		A8A37EBC291FAF6200389AFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A37EBB291FAF6200389AFD /* ContentView.swift */; };
 		A8A37EBE291FAF6500389AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8A37EBD291FAF6500389AFD /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		A87C3AED2926398F001954FF /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 		A87C3AEF292658B3001954FF /* CastCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCardView.swift; sourceTree = "<group>"; };
 		A8845E9E2927BE1E00DF8018 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A8845E9F2927CD6D00DF8018 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8A37EB6291FAF6200389AFD /* MovieDatabase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDatabase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A37EB9291FAF6200389AFD /* MovieDatabaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDatabaseApp.swift; sourceTree = "<group>"; };
 		A8A37EBB291FAF6200389AFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				A8A37EBB291FAF6200389AFD /* ContentView.swift */,
 				A8A37EBD291FAF6500389AFD /* Assets.xcassets */,
 				A8A37EBF291FAF6500389AFD /* Preview Content */,
+				A8845E9F2927CD6D00DF8018 /* LaunchScreen.storyboard */,
 			);
 			path = MovieDatabase;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8845EA02927CD6D00DF8018 /* LaunchScreen.storyboard in Resources */,
 				A8A37EC1291FAF6500389AFD /* Preview Assets.xcassets in Resources */,
 				A8A37EBE291FAF6500389AFD /* Assets.xcassets in Resources */,
 			);
@@ -472,6 +476,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -503,6 +508,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
