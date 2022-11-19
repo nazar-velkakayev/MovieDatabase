@@ -30,7 +30,7 @@ Native iOS application with Swift / SwiftUI, requires iOS 14+
 
 ## Important!
 
-To run this project, you will need to update `API_KEY` static variable with your available key in your Global.swift file
+To run this project, you will need to update `API_KEY` static variable with your available key in Global.swift file
 
 
 ## 🔗 Links
