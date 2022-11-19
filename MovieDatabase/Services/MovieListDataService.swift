@@ -23,11 +23,6 @@ class MovieListDataService{
     
         
     private func getPopularMovies(){
-//        guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=568cd98b3417378bb325cd3b623c9834&language=en-US&page=1") else {
-//            print("\n invalid popular movie list url:")
-//            return
-//        }
-//
         guard let url = URL(string: API.Endpoint.popular.url) else{
             print("\n invalid popular movie list url:")
             return
@@ -45,11 +40,6 @@ class MovieListDataService{
     }
     
     private func getTopRatedMovies(){
-//        guard let url = URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=568cd98b3417378bb325cd3b623c9834&language=en-US&page=1") else {
-//            print("\n invalid top-rated movie list url")
-//            return
-//        }
-        
         guard let url = URL(string: API.Endpoint.topRated.url) else{
             print("\n invalid popular movie list url:")
             return

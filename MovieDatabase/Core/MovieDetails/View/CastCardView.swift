@@ -19,7 +19,7 @@ struct CastCardView: View {
             AnimatedImage(url: URL(string: API.Endpoint.image(endpoint: image).url))
                 .resizable()
                 .placeholder{
-                    ShimmerEffect(width: 60, height: 60, speed: 0.1)
+                    ShimmerEffect(width: 60, height: 60)
                         .frame(width: 60, height: 60)
                         .clipShape(Circle())
                         .clipped()

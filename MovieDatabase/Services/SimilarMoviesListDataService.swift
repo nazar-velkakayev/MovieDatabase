@@ -20,11 +20,6 @@ class SimilarMoviesListDataService{
     
     
     private func getSimilarMovies(movieID: Int){
-//        guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieID)/similar?api_key=568cd98b3417378bb325cd3b623c9834&language=en-US&page=1") else{
-//            print("\n invalid similar movie url")
-//            return
-//        }
-        
         guard let url = URL(string: API.Endpoint.similar(id: movieID).url) else{
             print("\n invalid similar movie url")
             return

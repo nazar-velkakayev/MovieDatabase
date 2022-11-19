@@ -9,5 +9,5 @@ import Foundation
 
 
 class Global{
-    static let api_key_v3 = "568cd98b3417378bb325cd3b623c9834"
+    static let API_KEY = "API_KEY"
 }

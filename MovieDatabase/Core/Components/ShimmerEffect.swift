@@ -13,9 +13,7 @@ struct ShimmerEffect: View {
     
     let width: CGFloat
     let height: CGFloat
-    
-    let speed: Double
-    
+        
     let center = UIScreen.main.bounds.width
     
     var body: some View {
@@ -24,7 +22,7 @@ struct ShimmerEffect: View {
                 .frame(width: width, height: height)
                 .cornerRadius(10)
             
-            Color.white
+            Color.white.opacity(0.5)
                 .frame(width: width * 2, height: height * 2)
                 .cornerRadius(10)
                 .shimmering()
@@ -35,6 +33,6 @@ struct ShimmerEffect: View {
 
 struct ShimmerEffect_Previews: PreviewProvider {
     static var previews: some View {
-        ShimmerEffect(width: 200, height: 250, speed: 0.3)
+        ShimmerEffect(width: 200, height: 250)
     }
 }

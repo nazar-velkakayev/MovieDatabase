@@ -32,10 +32,18 @@ struct HomeView: View {
                     
                     
                     //popular
-                    movieCategory(title: "Popular Movies", dataArray: vm_homeView.popularMovies, size: (150, 200))
+                    if !vm_homeView.popularMovies.isEmpty{
+                        movieCategory(title: "Popular Movies", dataArray: vm_homeView.popularMovies, size: (150, 200))
+                    }else{
+                        loadingCardAnimation(title: "Popular Movies", size: (150, 200))
+                    }
                     
                     //top rated
-                    movieCategory(title: "Top Rated Movies", dataArray: vm_homeView.topRatedMovies, size: (120, 170))
+                    if !vm_homeView.topRatedMovies.isEmpty{
+                        movieCategory(title: "Top Rated Movies", dataArray: vm_homeView.topRatedMovies, size: (120, 170))
+                    }else{
+                        loadingCardAnimation(title: "Top Rated Movies", size: (120, 170))
+                    }
 
                 }
                 .padding()
@@ -79,6 +87,26 @@ extension HomeView{
                         } label: {
                             MovieCardView(movie: movie, width: size.width, height: size.height)
                         }
+                    }
+                }
+                .padding(.leading)
+            }
+            .padding(.leading, -15)
+        }
+    }
+    
+    @ViewBuilder private func loadingCardAnimation(title: String, size: (width: CGFloat, height: CGFloat))-> some View{
+        VStack{
+            Text(title)
+                .foregroundColor(.white)
+                .font(.system(size: 20, weight: .semibold))
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+
+            ScrollView(.horizontal, showsIndicators: false){
+                HStack(spacing: 20){
+                    ForEach(0..<10){movie in
+                        ShimmerEffect(width: size.width, height: size.height)
                     }
                 }
                 .padding(.leading)
