@@ -6,8 +6,8 @@ Native iOS application with Swift / SwiftUI, requires iOS 14+
 ## Preview
 
 <p float="left">
-  <img src="https://github.com/nazar-velkakayev/MovieDatabase/blob/main/MovieDatabase/Assets.xcassets/preview/img_preview_1.imageset/IMG_5491.PNG?raw=true" width="200" />
-  <img src="https://github.com/nazar-velkakayev/MovieDatabase/blob/main/MovieDatabase/Assets.xcassets/preview/img_preview_2.imageset/IMG_5492.PNG?raw=true" width="200" /> 
+  <img src="https://github.com/nazar-velkakayev/MovieDatabase/blob/main/MovieDatabase/Assets.xcassets/preview/img_preview_1.imageset/IMG_5491.PNG?raw=true" width="400" />
+  <img src="https://github.com/nazar-velkakayev/MovieDatabase/blob/main/MovieDatabase/Assets.xcassets/preview/img_preview_2.imageset/IMG_5492.PNG?raw=true" width="400" /> 
 </p>
 
 
