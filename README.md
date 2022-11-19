@@ -5,7 +5,10 @@ Native iOS application with Swift / SwiftUI, requires iOS 14+
 
 ## Preview
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<p float="left">
+  <img src="https://github.com/nazar-velkakayev/MovieDatabase/blob/main/MovieDatabase/Assets.xcassets/preview/img_preview_1.imageset/IMG_5491.PNG?raw=true" width="200" />
+  <img src="https://github.com/nazar-velkakayev/MovieDatabase/blob/main/MovieDatabase/Assets.xcassets/preview/img_preview_2.imageset/IMG_5492.PNG?raw=true" width="200" /> 
+</p>
 
 
 ## Tech Stack
