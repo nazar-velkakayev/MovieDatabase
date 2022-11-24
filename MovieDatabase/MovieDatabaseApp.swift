@@ -11,15 +11,17 @@ import UIKit
 
 @main
 struct MovieDatabaseApp: App {
-    @StateObject private var vm_homeView = VM_HomeView()
+    //@StateObject private var vm_homeView = VM_HomeView()
 
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                HomeView()
-                    .environmentObject(vm_homeView)
-            }
-            .navigationBarHidden(true)
+//            NavigationView {
+//                HomeView()
+//                    .environmentObject(vm_homeView)
+//            }
+//            .navigationBarHidden(true)
+            
+            PlayerView()
         }
     }
 }

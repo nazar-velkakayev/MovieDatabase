@@ -36,6 +36,8 @@
 		A8E0DFED29250DCC00CBEE2F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E0DFEC29250DCC00CBEE2F /* API.swift */; };
 		A8E0DFEF29252FF000CBEE2F /* MovieCreditsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E0DFEE29252FF000CBEE2F /* MovieCreditsDataService.swift */; };
 		A8E0DFF12925302E00CBEE2F /* MovieCreditsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E0DFF02925302E00CBEE2F /* MovieCreditsModel.swift */; };
+		A8E74D42292F4F6F0018E36C /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E74D41292F4F6F0018E36C /* PlayerView.swift */; };
+		A8E74D45292F4FCD0018E36C /* VM_PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E74D44292F4FCD0018E36C /* VM_PlayerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		A8E0DFEC29250DCC00CBEE2F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		A8E0DFEE29252FF000CBEE2F /* MovieCreditsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCreditsDataService.swift; sourceTree = "<group>"; };
 		A8E0DFF02925302E00CBEE2F /* MovieCreditsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCreditsModel.swift; sourceTree = "<group>"; };
+		A8E74D41292F4F6F0018E36C /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		A8E74D44292F4FCD0018E36C /* VM_PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VM_PlayerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,7 @@
 		A8A37EB8291FAF6200389AFD /* MovieDatabase */ = {
 			isa = PBXGroup;
 			children = (
+				A8E74D3E292F4F500018E36C /* Player */,
 				A8845E9E2927BE1E00DF8018 /* Info.plist */,
 				A828C75A292121BE0090B6A4 /* Extensions */,
 				A8A37ED3291FC8D300389AFD /* Services */,
@@ -238,6 +243,31 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		A8E74D3E292F4F500018E36C /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				A8E74D40292F4F600018E36C /* ViewModel */,
+				A8E74D3F292F4F5C0018E36C /* View */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		A8E74D3F292F4F5C0018E36C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A8E74D41292F4F6F0018E36C /* PlayerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A8E74D40292F4F600018E36C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A8E74D44292F4FCD0018E36C /* VM_PlayerView.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -323,8 +353,10 @@
 				A8A37ECF291FB22200389AFD /* HomeView.swift in Sources */,
 				A8E0DFEB2924F0E800CBEE2F /* ShimmerEffect.swift in Sources */,
 				A87C3AF0292658B3001954FF /* CastCardView.swift in Sources */,
+				A8E74D45292F4FCD0018E36C /* VM_PlayerView.swift in Sources */,
 				A8BF7422292250FE00DE0B77 /* MovieDetailModel.swift in Sources */,
 				A828C7552920D3000090B6A4 /* MovieDetailsView.swift in Sources */,
+				A8E74D42292F4F6F0018E36C /* PlayerView.swift in Sources */,
 				A828C75929211DCD0090B6A4 /* VM_HomeView.swift in Sources */,
 				A8BF74242922548300DE0B77 /* VM_MovieDetailsView.swift in Sources */,
 				A8A37EBA291FAF6200389AFD /* MovieDatabaseApp.swift in Sources */,
@@ -477,7 +509,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -509,7 +543,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
